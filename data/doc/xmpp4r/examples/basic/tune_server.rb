@@ -15,7 +15,7 @@ require 'rbosa'
 # NB needs rbosa library to access iTunes - only on MacOSX
 #
 
-if ARGV.length != 2:
+if ARGV.length != 2
   puts "Usage: ruby tune_server.rb <jid> <pw>"
   exit 1
 end
