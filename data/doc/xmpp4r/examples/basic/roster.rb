@@ -13,7 +13,7 @@ jid = JID.new('lucastest@linux.ensimag.fr/rosterget')
 password = 'lucastest'
 
 OptionParser.new do |opts|
-  opts.banner = 'Usage: roster.rb -t get -j jid -p password'
+  opts.banner = 'Usage: roster.rb -j jid -p password'
   opts.separator ''
   opts.on('-j', '--jid JID', 'sets the jid') { |j| jid = JID.new(j) }
   opts.on('-p', '--password PASSWORD', 'sets the password') { |p| password = p }

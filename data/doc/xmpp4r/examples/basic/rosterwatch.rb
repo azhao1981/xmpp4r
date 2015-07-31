@@ -151,7 +151,7 @@ subscription_callback = lambda { |item,pres|
     name = "#{item.iname} (#{pres.from})"
   end
   case pres.type
-    when :subscribe then puts("Subscription request from #{name}")
+    when :subscribe then puts("Subscription request from #{name}"); roster.accept_subscription(pres.from) ; 
     when :subscribed then puts("Subscribed to #{name}")
     when :unsubscribe then puts("Unsubscription request from #{name}")
     when :unsubscribed then puts("Unsubscribed from #{name}")
