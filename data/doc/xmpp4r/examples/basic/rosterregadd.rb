@@ -1,17 +1,20 @@
 #!/usr/bin/ruby
+#
+# XMPP4R - XMPP Library for Ruby
+# Copyright (C) 2005 Stephan Maka <stephan@spaceboyz.net>
+# Released under Ruby's license (see the LICENSE file) or GPL, at your option
+#
+#
+# Roster-Add example
+#
+#
+# Learn how to subscript a user presence
+$:.unshift '../../../../../lib/'
 
-$:.unshift '../../../../../lib'
 require 'xmpp4r'
 require 'xmpp4r/roster/helper/roster'
 
-# Argument checking
-if ARGV.size < 2
-  puts("Usage: #{$0} <desired jid> <password> [field1=value1] [fieldN=valueN]")
-  exit
-end
-to_jid = ARGV[0]
-jid = ARGV[0]
-pwd = ARGV[1]
+# Command line argument checking
 # The usual procedure
 def regitser_add_roster(jid, pwd, to_jid)
   cl = Jabber::Client.new(Jabber::JID.new(jid))
@@ -42,8 +45,11 @@ def regitser_add_roster(jid, pwd, to_jid)
   roster.add(to_jid,nil,true)
   cl.close
 end
-1000.times do |i|
-  tmp = sprintf("%.4d",i)
-  regitser_add_roster("5#{tmp}_#{jid}",'123', to_jid)
+
+if ARGV.size != 3
+  puts("Usage: ./rosterregadd.rb <jid> <password> <tojid>")
+  exit
 end
 
+jid,pwd,to_jid = ARGV
+regitser_add_roster(jid,pwd,to_jid)
